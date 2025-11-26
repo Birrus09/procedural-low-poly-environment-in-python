@@ -1,0 +1,3 @@
+fix biggify function:
+add convolutional noise
+open/save world file from .txt
