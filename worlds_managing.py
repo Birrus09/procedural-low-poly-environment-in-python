@@ -35,9 +35,9 @@ def load_world(world_dir):
     return destination_vector
 
 def populate(nodes_map, x, y):
-    for i in range(0, x, 10):
-        for j in range(0, y, 10):
-            nodes_map.append(node(i,j,0,"none"))
+    for i in range(0, x*10, 10):
+        for j in range(0, y*10, 10):
+            nodes_map.append(node(i,j,0,"void"))
 
 '''
 
