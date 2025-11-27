@@ -1,3 +1,7 @@
+#temporary
+import proc_noise
+
+
 class node():
     def __init__(self, x, y, altitude, biome):
         self.x = x
@@ -14,6 +18,12 @@ def gen_terrain(map_nodes, noise):
     else:
         print("World too big!")
 
+def save_world(world, file):
+    with open(file, "w") as f:
+        for n in world:
+            f.write(f"{n.x},{n.y},{n.altitude},{n.biome}\n")
+    pass
+
 
 
 nodes_1080_720 = []
@@ -21,3 +31,9 @@ nodes_1080_720 = []
 for i in range(0,1080, 10):
     for j in range(0,720, 10):
         nodes_1080_720.append(node(i,j,0,"none"))
+
+
+gen_terrain(nodes_1080_720, proc_noise.Noise4_1_2)
+
+
+save_world(nodes_1080_720, "Worlds/World1.txt")
