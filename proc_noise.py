@@ -145,27 +145,16 @@ def convolution(source, width, height):
 
 def DoubleSineWave(width, height, frequency):
     SineNoise = []
-    
-    x = 1
-    y = 1
+    x = 0.5
     for i in range(width):
         x -= 0.1 * frequency
-
+        y = 0
         for j in range(height):
 
             y -= 0.1 * frequency
-            SineNoise.append(math.sin(x+y)-0.5*254)
+            SineNoise.append((math.sin(x)+math.sin(y)-0.5)*254)
 
     return SineNoise
-
-
-
-
-
-
-
-
-
 
 
 
@@ -178,9 +167,10 @@ Noise2 = waterfall_noise_generation(108, 72, 154)
 
 Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
 
+Noise5 = DoubleSineWave(108, 72, 4)
+
 Noise4_3 = convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33)
 Noise4_3_2 = convolution(convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33), 33, 33)
 Noise4_1 = convolution(ran_noise_generation(108, 72),108, 72)
 Noise4_1_2 = convolution(convolution(ran_noise_generation(108, 72),108, 72), 108, 72)
-
-Noise5 = DoubleSineWave(108, 72, 2)
+Noise4_5 = convolution(convolution(Noise5, 108, 72), 108, 72)
