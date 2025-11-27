@@ -13,7 +13,7 @@ SCREEN_HEIGHT = 720
 
 
 
-worlds_managing.gen_terrain(worlds_managing.nodes_1080_720, proc_noise.Noise1)
+worlds_managing.gen_terrain(worlds_managing.nodes_1080_720, proc_noise.Noise4_1)
 
 
 def show_map(map):
@@ -24,8 +24,7 @@ def show_map(map):
         b = max(0, min(255, 127 - a))
         pygame.draw.rect(screen, (r, g, b), (n.x, n.y, 10, 10))
 
-
-
+current_world = worlds_managing.load_world("Worlds/World1.txt")
 
 
 # Initialize Pygame
@@ -52,7 +51,12 @@ while running:
     
     # Fill screen with black
     screen.fill((0, 0, 0))
-    show_map(worlds_managing.nodes_1080_720)
+    show_map(current_world)
+    
+    # Update display
+    pygame.display.flip()
+
+pygame.quit()
     
     # Update display
     pygame.display.flip()
