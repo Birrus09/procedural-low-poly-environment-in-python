@@ -1,7 +1,7 @@
 fix biggify function
 add interactive console
-add CLI world manager
-double sine wave noise
+add CLI world manager (starting from utility)
+double sine wave noise (add offset)
 sum noises function
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
