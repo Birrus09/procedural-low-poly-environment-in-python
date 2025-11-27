@@ -1,7 +1,5 @@
-
 import random
-
-
+import math
 
 
 def ran_noise_generation(width, height):
@@ -145,6 +143,32 @@ def convolution(source, width, height):
     return conv_noise    
 
 
+def DoubleSineWave(width, height, frequency):
+    SineNoise = []
+    
+    x = 1
+    y = 1
+    for i in range(width):
+        x -= 0.1 * frequency
+
+        for j in range(height):
+
+            y -= 0.1 * frequency
+            SineNoise.append(math.sin(x+y)-0.5*254)
+
+    return SineNoise
+
+
+
+
+
+
+
+
+
+
+
+
 Noise1 = ran_noise_generation(108, 72)
 
 
@@ -159,3 +183,4 @@ Noise4_3_2 = convolution(convolution(biggify(ran_noise_generation(11, 11), 11, 3
 Noise4_1 = convolution(ran_noise_generation(108, 72),108, 72)
 Noise4_1_2 = convolution(convolution(ran_noise_generation(108, 72),108, 72), 108, 72)
 
+Noise5 = DoubleSineWave(108, 72, 2)
