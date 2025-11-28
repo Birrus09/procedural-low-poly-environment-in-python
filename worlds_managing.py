@@ -1,3 +1,5 @@
+import proc_noise
+
 class node():
     def __init__(self, x, y, altitude, biome):
         self.x = x
@@ -39,12 +41,24 @@ def populate(nodes_map, x, y):
         for j in range(0, y*10, 10):
             nodes_map.append(node(i,j,0,"void"))
 
+
+def generate_biome_distibution(world, noise):
+    for i in range(len(world)):
+        if world[i].altitude < -80:
+            if noise[i] < -100:
+                world[i].biome = "ice"
+            else:
+                world[i].biome = "ocean"
+        elif world[i].altitude < 0:
+            world[i].biome = "beach"
+        elif world[i].altitude < 20:
+            world[i].biome = "plains"
+        else:
+            world[i].biome = "mountain"
 '''
-
-#how WaterWorld was created
-
-gen_terrain(nodes_1080_720, proc_noise.Noise2)
-
-
-save_world(nodes_1080_720, "Worlds/WaterWorld.txt")
+test_biomes = []
+populate(test_biomes, 108, 72)
+gen_terrain(test_biomes, proc_noise.Noise4_2_2)
+generate_biome_distibution(test_biomes, proc_noise.Noise4_5)
+save_world(test_biomes, "Worlds/testworld2.txt")
 '''
