@@ -161,7 +161,13 @@ def gatenoise(source, treshold, invert = False ):
                 v = n
         gated_noise.append(v)
     return gated_noise
+def sumnoise(source1, source2, weight1=0.5):
+    
+    summed_noise = []
+    weight2 = 1 - weight1
 
+    for i in range(len(source1)):
+        summed_noise.append(source1[i]*weight1 + source2[i]*weight2)
 
 Noise1 = ran_noise_generation(108, 72)
 
