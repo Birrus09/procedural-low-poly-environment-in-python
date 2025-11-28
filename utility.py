@@ -54,7 +54,7 @@ while True:
                     craftchoice = int(input("command: "))
                     if craftchoice == 1:
                         while True:
-                            print("generative functions: 1) ran_noise_generation, 2) waterfall_noise_generation, 3) DoubleSineWave, x) back")
+                            print("generative functions: 1) ran_noise_generation, 2) waterfall_noise_generation, 3) DoubleSineWave, 0) back")
                             genchoice = int(input("command: "))
                             if genchoice == 1:
                                 par1 = int(input("width: "))
@@ -78,7 +78,7 @@ while True:
                                 break
                     elif craftchoice == 2:
                         while True:
-                            print("transformative functions: 1) biggify, 2) convolution (smoothify), 3)hardclip/gate x) back")
+                            print("transformative functions: 1) biggify, 2) convolution (smoothify), 3)hardclip/gate 0) back")
                             transchoice = int(input("command: "))
                             if transchoice == 1:
                                 par1 = int(input("scale factor: "))
@@ -94,9 +94,9 @@ while True:
                                 par1 = float(input("threshold(-128;127): "))
                                 option = int(input("1) hardclip, 2) gate: "))
                                 if option == 1:
-                                    gen_noise = proc_noise.gatenoise(gen_noise, par1, True)
+                                    gen_noise = proc_noise.gatenoise(gen_noise, par1, False)
                                 elif option == 2:
-                                    gen_noise = proc_noise.gatenoise(gen_noise, par1)
+                                    gen_noise = proc_noise.gatenoise(gen_noise, par1, True)
                                 print("noise transformed.")
                             
                             else:
