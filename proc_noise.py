@@ -9,9 +9,9 @@ def ran_noise_generation(width, height):
     return noise
 
 
-def waterfall_noise_generation(width, height, clump_size):
+def waterfall_noise_generation(width, height, intensity):
     noise = []
-    fluctuation = random.randint(-clump_size,clump_size)
+    fluctuation = random.randint(-intensity,intensity)
     for i in range(width * height):
         noise.append(random.randint(0,1) + fluctuation)
         if fluctuation < 0:
@@ -19,7 +19,7 @@ def waterfall_noise_generation(width, height, clump_size):
         if fluctuation > 0:
             fluctuation -= 1
         if fluctuation == 0:
-            fluctuation = random.randint(-clump_size,clump_size)
+            fluctuation = random.randint(-intensity,intensity)
 
     return noise
 
@@ -36,17 +36,6 @@ def biggify(source, width, factor):
     return big_noise
 
 
-
-def biggify(source, width, factor):
-    big_noise = []
-    L = len(source)
-    for i in range(0, L, width):
-        for k in range(factor):
-            for z in range(i, i + width):
-                idx = min(z, L - 1)
-                for n in range(factor):
-                    big_noise.append(source[idx])
-    return big_noise
 
 def convolution(source, width, height):
     conv_noise = []
@@ -143,9 +132,9 @@ def convolution(source, width, height):
     return conv_noise    
 
 
-def DoubleSineWave(width, height, frequency):
+def DoubleSineWave(width, height, frequency, offset):
     SineNoise = []
-    x = 0.5
+    x = 1 + offset
     for i in range(width):
         x -= 0.1 * frequency
         y = 0
@@ -167,10 +156,13 @@ Noise2 = waterfall_noise_generation(108, 72, 154)
 
 Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
 
-Noise5 = DoubleSineWave(108, 72, 4)
+Noise5 = DoubleSineWave(108, 72, 4, 0.1)
 
 Noise4_3 = convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33)
 Noise4_3_2 = convolution(convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33), 33, 33)
 Noise4_1 = convolution(ran_noise_generation(108, 72),108, 72)
 Noise4_1_2 = convolution(convolution(ran_noise_generation(108, 72),108, 72), 108, 72)
 Noise4_5 = convolution(convolution(Noise5, 108, 72), 108, 72)
+
+
+Noise4_2_2 = convolution(biggify(waterfall_noise_generation(54, 36, 81), 54, 2), 108, 72)
