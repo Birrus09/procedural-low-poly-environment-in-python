@@ -1,6 +1,6 @@
 fix biggify function
-sum noises function
-
+sum noises function (fix)
+finish biome generation
 
 
 
