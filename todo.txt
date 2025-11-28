@@ -1,16 +1,16 @@
 fix biggify function
-add interactive console
-add CLI world manager (starting from utility)
 sum noises function
 noise clipper (scatter)
-add noise crafting CLI
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-
-
+add noise crafting CLI                     DONE
+add interactive console                    DONE
+add CLI world manager                      DONE
 double sine wave noise (add offset)        DONE
 test convolution function                  DONE
 open/save world file from .txt             DONE
