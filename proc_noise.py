@@ -41,8 +41,7 @@ def convolution(source, width, height):
     conv_noise = []
 
     for i in range(width*height-1):
-        #top side fuck you nig
-        
+
 
         #left side
         if i % width == 0:
@@ -137,13 +136,15 @@ def DoubleSineWave(width, height, frequency, offset):
     x = 1 + offset
     for i in range(width):
         x -= 0.1 * frequency
-        y = 0
+        y = 1
         for j in range(height):
 
             y -= 0.1 * frequency
             SineNoise.append((math.sin(x)+math.sin(y)-0.5)*254)
 
     return SineNoise
+
+
 
 def gatenoise(source, treshold, invert = False ):
     gated_noise = []
@@ -161,13 +162,16 @@ def gatenoise(source, treshold, invert = False ):
                 v = n
         gated_noise.append(v)
     return gated_noise
+
 def sumnoise(source1, source2, weight1=0.5):
-    
+
     summed_noise = []
     weight2 = 1 - weight1
 
     for i in range(len(source1)):
-        summed_noise.append(source1[i]*weight1 + source2[i]*weight2)
+        summed_noise.append((source1[i])*weight1 + (source2[i])*weight2)
+
+
 
 Noise1 = ran_noise_generation(108, 72)
 
@@ -188,3 +192,5 @@ Noise4_5 = convolution(convolution(Noise5, 108, 72), 108, 72)
 
 
 Noise4_2_2 = convolution(biggify(waterfall_noise_generation(54, 36, 81), 54, 2), 108, 72)
+
+
