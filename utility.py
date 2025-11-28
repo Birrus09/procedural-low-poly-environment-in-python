@@ -101,7 +101,7 @@ while True:
                             elif transchoice == 4:
                                 chohoice = int(input("1) preset noise, 2) custom noise: "))
                                 weight = float(input("weight for original noise (0.0-1.0): "))
-                                if chohoice == 1:
+                                if chohoice == 2:
                                     noise_file = input("2layer noise file name: ")   
                                     noise_file = "Noises/" + noise_file + ".txt"
                                     other_noise = []
@@ -109,7 +109,7 @@ while True:
                                         dump = f.readlines()
                                         for i in dump:
                                             other_noise.append(float(i.strip()))
-                                if chohoice == 2:
+                                if chohoice == 1:
                                     noise_file = input("preset noise name: ")
                                     other_noise = "proc_noise." + noise_file
                                 gen_noise = proc_noise.sumnoise(gen_noise, other_noise, weight)
