@@ -1,24 +1,36 @@
 import worlds_managing
 import proc_noise
-
+import os
 
 Worldsine = []
 worlds_managing.populate(Worldsine, 108, 72)
-worlds_managing.gen_terrain(Worldsine, proc_noise.Noise5)
+worlds_managing.gen_terrain(Worldsine, proc_noise.Noise4_5)
 worlds_managing.save_world(Worldsine, "Worlds/worldsine.txt")
 
+
+
+
 while True:
-    print("Options: 1) create world, 2) see worlds directory, 3) see available noises, 4) craft noise, 5) quit")
+    print("Options: 1) create world, 2) see worlds directory, 3) see noise presets, 4) craft custom noise, 5) quit")
     choice = int(input("command: "))
     if choice == 1:
+        Nsource = int(input("1) preset noise, 2) custom noise: "))
+        if Nsource == 1:
+            world_noise = proc_noise.input("Noise: ")
+        if Nsource == 2:
+            world_noise = []
+            with open("Noises/" + input("Noise file name: ") + ".txt", "r") as f:
+                dump = f.readlines()
+                for i in dump:
+                    world_noise.append(float(i.strip()))
+
         width = int(input("width: "))
         height = int(input("height: "))
         world_dir = input("world name: ")
         world_dir = "Worlds/" + world_dir + ".txt"
-        world_noise = input("noise: ")
         new_world = []
         worlds_managing.populate(new_world, width, height)
-        worlds_managing.gen_terrain(new_world, getattr(proc_noise, world_noise))
+        worlds_managing.gen_terrain(new_world, world_noise)
         worlds_managing.save_world(new_world, world_dir)
         print("world created!")
     elif choice == 2:
