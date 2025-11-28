@@ -54,7 +54,7 @@ while True:
                     craftchoice = int(input("command: "))
                     if craftchoice == 1:
                         while True:
-                            print("generative functions: 1) ran_noise_generation, 2) waterfall_noise_generation, 3) DoubleSineWave, 4) back")
+                            print("generative functions: 1) ran_noise_generation, 2) waterfall_noise_generation, 3) DoubleSineWave, x) back")
                             genchoice = int(input("command: "))
                             if genchoice == 1:
                                 par1 = int(input("width: "))
@@ -78,7 +78,7 @@ while True:
                                 break
                     elif craftchoice == 2:
                         while True:
-                            print("transformative functions: 1) biggify, 2) convolution (smoothify), 3) back")
+                            print("transformative functions: 1) biggify, 2) convolution (smoothify), 3)hardclip/gate x) back")
                             transchoice = int(input("command: "))
                             if transchoice == 1:
                                 par1 = int(input("scale factor: "))
@@ -90,6 +90,15 @@ while True:
                                 par2 = int(input("original height: "))
                                 gen_noise = proc_noise.convolution(gen_noise, par1, par2)
                                 print("noise transformed.")
+                            elif transchoice == 3:
+                                par1 = float(input("threshold(-128;127): "))
+                                option = int(input("1) hardclip, 2) gate: "))
+                                if option == 1:
+                                    gen_noise = proc_noise.gatenoise(gen_noise, par1, True)
+                                elif option == 2:
+                                    gen_noise = proc_noise.gatenoise(gen_noise, par1)
+                                print("noise transformed.")
+                            
                             else:
                                 break
                     else:
